@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,3 +12,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@import url(./components/App/App.css);
+
+@import url(./components/Header/Header.css);
+@import url(./components/Header/__navigation-container/header__navigation-container.css);
+@import url(./components/Header/header__headline.css);
+@import url(./components/Header/__button/header__button.css);
+
+@import url(./components/Navigation/Navigation.css);
+@import url(./components/Navigation/__link/navigation__link.css);
+
+@import url(./components/Button/Button.css);
+@import url(./components/Button/_place/button_place_search-section.css);
+
+@import url(./components/Main/Main.css);
+
+@import url(./components/SearchSEction/SearchSection.css);
+@import url(./components/SearchSEction/__title/search-section__title.css);
+@import url(./components/SearchSEction/__text/search-section__text.css);
+@import url(./components/SearchSEction/__input-container/search-section__input-container.css);
+@import url(./components/SearchSEction/__input/search-section__input.css);
+
+@import url(./components/AboutTheAuthor/AboutTheAuthor.css);
+@import url(./components/AboutTheAuthor/__img/about-the-author__img.css);
+@import url(./components/AboutTheAuthor/__text-container/about-the-author__text-container.css);
+@import url(./components/AboutTheAuthor/__title/about-the-author__title.css);
+@import url(./components/AboutTheAuthor/__text/about-the-author__text.css);
+
+@import url(./components/Footer/Footer.css);
+@import url(./components/Footer/__copyright/footer__copyright.css);
+@import url(./components/Footer/__links-container/footer__links-container.css);
+@import url(./components/Footer/__link/footer__link.css);
