@@ -1,0 +1,14 @@
+.button_place_signin {
+  width: 358px;
+  height: 64px;
+  margin: 40px 0 0 0;
+  display: block;
+  background-color: #2f71e5;
+  color: white;
+  border: none;
+  transition: background-color linear 0.2s;
+}
+
+.button_place_signin:hover {
+  background-color: #347eff;
+}

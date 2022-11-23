@@ -1,0 +1,7 @@
+.article {
+  width: 400px;
+  height: 576px;
+  position: relative;
+  border-radius: 10px;
+  background-color: white;
+}

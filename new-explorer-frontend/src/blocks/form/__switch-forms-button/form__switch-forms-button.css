@@ -1,0 +1,11 @@
+.form__switch-forms-button {
+  margin: 16px 0 0 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  font-family: 'Inter', Arial, sans-serif;
+  text-align: center;
+  background-color: transparent;
+  color: #000000;
+  border: none;
+}

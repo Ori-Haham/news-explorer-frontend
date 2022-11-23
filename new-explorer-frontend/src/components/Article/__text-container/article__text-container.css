@@ -1,0 +1,5 @@
+.article__text-container {
+  width: calc(100% - 48px);
+  height: 304px;
+  padding: 20px 24px 24px;
+}

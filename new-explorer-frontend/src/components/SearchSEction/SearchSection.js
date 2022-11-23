@@ -1,5 +1,3 @@
-import Button from '../Button/Button';
-
 export default function SearchSection() {
   return (
     <div className='search-section'>
@@ -13,7 +11,7 @@ export default function SearchSection() {
           className='search-section__input'
           placeholder='Enter topic'
         ></input>
-        <Button text='Search' place='SearchSection'></Button>
+        <button className='button button_place_search-section'>Search</button>
       </div>
     </div>
   );

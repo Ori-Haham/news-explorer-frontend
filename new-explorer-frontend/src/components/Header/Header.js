@@ -1,16 +1,22 @@
 import Nvigation from '../Navigation/Navigation';
-import SearchSection from '../SearchSEction/SearchSection';
-import Button from '../Button/Button';
 
-export default function Header() {
+export default function Header({ isHome, openSignin }) {
   return (
-    <header className='header'>
-      <div className='header__navigation-container'>
-        <h1 className='header__headline'>NewsExplorer</h1>
-        <Nvigation />
-        <Button text='Sign in' />
-      </div>
-      <SearchSection></SearchSection>
+    <header
+      className={isHome ? 'header' : 'header header_place_saved-articles'}
+    >
+      <h1 className='header__headline'>NewsExplorer</h1>
+      <Nvigation isHome={isHome} />
+      <button
+        className={
+          isHome
+            ? 'button header__button header__button_place_home'
+            : 'button header__button header__button_place_article'
+        }
+        onClick={openSignin}
+      >
+        Sign in
+      </button>
     </header>
   );
 }
