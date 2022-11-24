@@ -1,0 +1,7 @@
+.article__bookmark_checked {
+  background-image: url(../../../../images/bookmark-blue.svg);
+}
+
+.article__bookmark_checked:hover {
+  background-image: url(../../../../images/bookmark-blue.svg);
+}

@@ -12,3 +12,7 @@
 .button_place_search-section:hover {
   background-color: #347eff;
 }
+
+.button_place_search-section:active {
+  background-color: #2a65cc;
+}

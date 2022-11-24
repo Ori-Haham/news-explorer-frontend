@@ -1,12 +1,12 @@
-.article__delete-button {
+.article__bookmark {
   width: 40px;
   height: 40px;
-  margin: 0 0 0 auto;
+  margin: 0 0 0 5px;
   position: absolute;
   top: 24px;
   right: 24px;
-  background-image: url(../../../images/trash.svg);
-  background-size: 24px;
+  background-image: url(../../../images/bookmark.svg);
+  background-size: 14px 19px;
   background-position: center;
   background-repeat: no-repeat;
   border: none;
@@ -15,6 +15,6 @@
   transition: background-image linear 0.3s;
 }
 
-.article__delete-button:hover {
-  background-image: url(../../../images/trash-hover.svg);
+.article__bookmark:hover {
+  background-image: url(../../../images/bookmark-hover.svg);
 }

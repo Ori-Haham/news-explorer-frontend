@@ -14,6 +14,7 @@ export default function ArticleList(props) {
       date={article.date}
       text={article.text}
       source={article.source}
+      isHome={props.isHome}
     />
   ));
 

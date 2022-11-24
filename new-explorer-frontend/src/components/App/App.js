@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router';
 import { useState, useEffect } from 'react';
 
 import Header from '../Header/Header';
@@ -8,12 +8,15 @@ import SearchSection from '../SearchSEction/SearchSection';
 import Footer from '../Footer/Footer';
 import SignInPopup from '../SignInPopup/SignInPopup';
 import SignUpPopup from '../SignUpPopup/SignUpPopup';
+import MessagePopup from '../MessagePopup/MessagePopup';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 import '../../index.css';
 
 function App() {
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);
+  const [isMessageOpen, setIsMessageOpen] = useState(true);
 
   useEffect(() => {
     const close = (e) => {
@@ -43,6 +46,14 @@ function App() {
     setIsSignUpPopupOpen(false);
   }
 
+  function openMessageOpen() {
+    setIsMessageOpen(true);
+  }
+
+  function closeMessageOpen() {
+    setIsMessageOpen(false);
+  }
+
   return (
     <div className='app'>
       <Switch>
@@ -52,23 +63,28 @@ function App() {
             <SearchSection />
           </div>
           <Main />
+          <Footer />
         </Route>
         <Route path={'/articles'}>
           <Header openSignin={openSignInPopup} />
           <SavedArticles />
+          <Footer />
+        </Route>
+        <Route path={'*'}>
+          <PageNotFound />
         </Route>
       </Switch>
-      <Footer />
       <SignInPopup
         isOpen={isSignInPopupOpen}
         onClose={closeSignInPopup}
-        onSwitchFormClick={openSignUpPopup}
+        onSwitchPopupClick={openSignUpPopup}
       />
       <SignUpPopup
         isOpen={isSignUpPopupOpen}
         onClose={closeSignUpPopup}
-        onSwitchFormClick={openSignInPopup}
+        onSwitchPopupClick={openSignInPopup}
       ></SignUpPopup>
+      <MessagePopup isOpen={isMessageOpen} onClose={closeMessageOpen} />
     </div>
   );
 }

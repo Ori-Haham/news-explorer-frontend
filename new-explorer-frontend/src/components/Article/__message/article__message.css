@@ -1,0 +1,14 @@
+.article__message {
+  padding: 8px 22px;
+  margin: 0;
+  position: absolute;
+  right: 69px;
+  top: 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  background-color: white;
+  color: black;
+  z-index: 1;
+  border-radius: 10px;
+}

@@ -50,7 +50,7 @@ export default function SignInPopin(props) {
       </button>
       <button
         className='form__switch-forms-button'
-        onClick={props.onSwitchFormClick}
+        onClick={props.onSwitchPopupClick}
       >
         or <span className='form__switch-forms-span-text'>Sign up</span>
       </button>

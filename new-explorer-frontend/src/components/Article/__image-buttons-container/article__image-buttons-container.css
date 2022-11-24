@@ -1,0 +1,7 @@
+.article__image-buttons-container {
+  width: 352px;
+  padding: 0 24px;
+  position: absolute;
+  top: 24px;
+  display: flex;
+}

@@ -15,6 +15,8 @@
 @import url(./components/Navigation/__link/navigation__link.css);
 @import url(./components/Navigation/_place/navigation__link_place_home.css);
 @import url(./components/Navigation/_place/navigation__link_place_articles.css);
+@import url(./components/Navigation/__link/_type/navigation__link_active-white.css);
+@import url(./components/Navigation/__link/_type/navigation__link_active-black.css);
 
 @import url(./components/Main/Main.css);
 
@@ -27,8 +29,12 @@
 @import url(./components/Article/Article.css);
 @import url(./components/Article/__image-container/article__image-container.css);
 @import url(./components/Article/__image/article__image.css);
+@import url(./components/Article/__image-buttons-container/article__image-buttons-container.css);
 @import url(./components/Article/__keyword/article__keyword.css);
 @import url(./components/Article/__delete-button/article__delete-button.css);
+@import url(./components/Article/__bookmark/article__bookmark.css);
+@import url(./components/Article/__bookmark/_type/article__bookmark_checked.css);
+@import url(./components/Article/__message/article__message.css);
 @import url(./components/Article/__text-container/article__text-container.css);
 @import url(./components/Article/__date/article__date.css);
 @import url(./components/Article/__title/article__title.css);
@@ -57,6 +63,8 @@
 @import url(./components/SavedArticlesInfo/__subtitle/saved-articles-info__subtitle.css);
 @import url(./components/SavedArticlesInfo/__key-words/saved-articles-info__key-words.css);
 
+@import url(./components/PageNotFound/PageNotFound.css);
+
 @import url(./blocks/button/button.css);
 @import url(./blocks/button/_place/button_place_search-section.css);
 @import url(./blocks/button/_place/button_place_articles.css);
@@ -66,13 +74,14 @@
 
 @import url(./blocks/popup/popup.css);
 @import url(./blocks/popup/__container/popup__container.css);
+@import url(./blocks/popup/__title/popup__title.css);
 @import url(./blocks/popup/__close-button/popup__close-button.css);
+@import url(./blocks/popup/__switch-forms-button/popup__switch-forms-button.css);
 
 @import url(./blocks/form/form.css);
 @import url(./blocks/form/__title/form__title.css);
 @import url(./blocks/form/__imput-name/form__input-name.css);
 @import url(./blocks/form/__input/form__input.css);
-@import url(./blocks/form/__fieldset/form__fieldset.css);
 @import url(./blocks/form/__switch-forms-button/form__switch-forms-button.css);
 @import url(./blocks/form/__switch-forms-span-text/form__switch-forms-span-text.css);
 

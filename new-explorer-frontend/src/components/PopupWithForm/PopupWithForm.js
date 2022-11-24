@@ -11,14 +11,12 @@ export default function PopupWithForm({
       <div className='popup__container'>
         <button
           onClick={onClose}
-          className={`${popupName}__close-button popup__close-button`}
+          className='popup__close-button'
           type='button'
         />
-        <form onSubmit={onSubmit} className='form' name='profileForm'>
+        <form className='form' onSubmit={onSubmit} name='profileForm'>
           <h2 className='form__title'>{title}</h2>
-          <fieldset className='profile-form__fieldset form__fieldset'>
-            {children}
-          </fieldset>
+          {children}
         </form>
       </div>
     </div>
