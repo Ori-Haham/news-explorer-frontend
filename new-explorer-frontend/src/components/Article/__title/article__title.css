@@ -1,8 +1,23 @@
 .article__title {
-  margin: 12px 0 0;
+  height: 60px;
+  margin: 15px 0 0;
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
   font-family: 'Roboto-slab', sans-serif;
   color: #1a1b22;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 768px) {
+  .article__title {
+    height: 72px;
+    margin: 12px 0 0;
+    font-size: 22px;
+    line-height: 24px;
+  }
 }

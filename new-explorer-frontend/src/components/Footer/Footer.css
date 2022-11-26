@@ -3,5 +3,22 @@
   padding: 0 7.2%;
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    width: 90%;
+    height: 66px;
+    padding: 0 5%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .footer {
+    height: 132px;
+    padding: 20px 5% 22px;
+    display: grid;
+    grid-template-rows: 74px 22px;
+    align-items: flex-start;
+  }
 }

@@ -3,3 +3,25 @@
   padding: 80px 13.25% 80px 7.25%;
   display: flex;
 }
+
+@media screen and (max-width: 1000px) {
+  .about-the-author {
+    width: 85.6%;
+    padding: 80px 7.25%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-the-author {
+    width: 90%;
+    padding: 40px 5% 60px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .about-the-author {
+    margin: 32px 5% 40px;
+    flex-direction: column;
+    align-items: center;
+  }
+}

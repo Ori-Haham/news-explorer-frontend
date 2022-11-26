@@ -14,3 +14,18 @@
 .button_place_articles:hover {
   background-color: #e8e8e8;
 }
+
+@media screen and (max-width: 768px) {
+  .button_place_articles {
+    margin: 0 auto 40px;
+    max-width: 240px;
+    padding: 16px 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .button_place_articles {
+    max-width: 288px;
+    margin: 0 auto 24px;
+  }
+}

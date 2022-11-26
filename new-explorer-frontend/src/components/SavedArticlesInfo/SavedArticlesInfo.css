@@ -3,3 +3,10 @@
   padding: 40px 7.2% 56px;
   color: #1a1b22;
 }
+
+@media screen and (max-width: 768px) {
+  .saved-articles-info {
+    width: 90%;
+    padding: 24px 5% 32px;
+  }
+}

@@ -18,3 +18,10 @@
 .article__delete-button:hover {
   background-image: url(../../../images/trash-hover.svg);
 }
+
+@media screen and (max-width: 768px) {
+  .article__delete-button {
+    top: 8px;
+    right: 8px;
+  }
+}

@@ -10,6 +10,7 @@ import SignInPopup from '../SignInPopup/SignInPopup';
 import SignUpPopup from '../SignUpPopup/SignUpPopup';
 import MessagePopup from '../MessagePopup/MessagePopup';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import MenuPopup from '../MenuPopup/MenuPopup';
 
 import '../../index.css';
 
@@ -17,6 +18,7 @@ function App() {
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);
   const [isMessageOpen, setIsMessageOpen] = useState(true);
+  const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
 
   useEffect(() => {
     const close = (e) => {
@@ -46,12 +48,20 @@ function App() {
     setIsSignUpPopupOpen(false);
   }
 
-  function openMessageOpen() {
+  function openMessage() {
     setIsMessageOpen(true);
   }
 
-  function closeMessageOpen() {
+  function closeMessage() {
     setIsMessageOpen(false);
+  }
+
+  function openMenuPopup() {
+    setIsMenuPopupOpen(true);
+  }
+
+  function closeMenuPopup() {
+    setIsMenuPopupOpen(false);
   }
 
   return (
@@ -59,14 +69,18 @@ function App() {
       <Switch>
         <Route exact path={'/'}>
           <div className='home-cover-img'>
-            <Header isHome={true} openSignin={openSignInPopup} />
+            <Header
+              isHome={true}
+              openSignin={openSignInPopup}
+              openMenuPopup={openMenuPopup}
+            />
             <SearchSection />
           </div>
           <Main />
           <Footer />
         </Route>
         <Route path={'/articles'}>
-          <Header openSignin={openSignInPopup} />
+          <Header openSignin={openSignInPopup} openMenuPopup={openMenuPopup} />
           <SavedArticles />
           <Footer />
         </Route>
@@ -84,7 +98,8 @@ function App() {
         onClose={closeSignUpPopup}
         onSwitchPopupClick={openSignInPopup}
       ></SignUpPopup>
-      <MessagePopup isOpen={isMessageOpen} onClose={closeMessageOpen} />
+      <MessagePopup isOpen={isMessageOpen} onClose={closeMessage} />
+      <MenuPopup isOpen={isMenuPopupOpen} onClose={closeMenuPopup} />
     </div>
   );
 }

@@ -1,5 +1,11 @@
 .article__text-container {
-  width: calc(100% - 48px);
-  height: 304px;
+  width: 352px;
   padding: 20px 24px 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .article__text-container {
+    width: 192px;
+    padding: 16px;
+  }
 }

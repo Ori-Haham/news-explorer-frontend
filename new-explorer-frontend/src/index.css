@@ -10,6 +10,9 @@
 @import url(./components/Header/__button/header__button.css);
 @import url(./components/Header/__button/_place/header__button_place_home.css);
 @import url(./components/Header/__button/_place/header__button_place_article.css);
+@import url(./components/Header/__menu-icon/header__menu-icon.css);
+
+@import url(./components/Logo/Logo.css);
 
 @import url(./components/Navigation/Navigation.css);
 @import url(./components/Navigation/__link/navigation__link.css);
@@ -29,7 +32,6 @@
 @import url(./components/Article/Article.css);
 @import url(./components/Article/__image-container/article__image-container.css);
 @import url(./components/Article/__image/article__image.css);
-@import url(./components/Article/__image-buttons-container/article__image-buttons-container.css);
 @import url(./components/Article/__keyword/article__keyword.css);
 @import url(./components/Article/__delete-button/article__delete-button.css);
 @import url(./components/Article/__bookmark/article__bookmark.css);
@@ -54,6 +56,8 @@
 @import url(./components/Footer/Footer.css);
 @import url(./components/Footer/__copyright/footer__copyright.css);
 @import url(./components/Footer/__links-container/footer__links-container.css);
+@import url(./components/Footer/__text-links/footer__text-links.css);
+@import url(./components/Footer/__icon-links/footer__icon-links.css);
 @import url(./components/Footer/__link/footer__link.css);
 
 @import url(./components/SavedArticles/SavedArticles.css);
@@ -62,6 +66,7 @@
 @import url(./components/SavedArticlesInfo/__title/saved-articles-info__title.css);
 @import url(./components/SavedArticlesInfo/__subtitle/saved-articles-info__subtitle.css);
 @import url(./components/SavedArticlesInfo/__key-words/saved-articles-info__key-words.css);
+@import url(components/SavedArticlesInfo/__key-words-list/saved-articles-info__key-words-list.css);
 
 @import url(./components/PageNotFound/PageNotFound.css);
 
@@ -69,6 +74,7 @@
 @import url(./blocks/button/_place/button_place_search-section.css);
 @import url(./blocks/button/_place/button_place_articles.css);
 @import url(./blocks/button/_place/button_place_signin.css);
+@import url(./blocks/button/_place/button__place_menu-popup.css);
 
 @import url(./blocks/home-cover-img/home-cover-img.css);
 
@@ -77,6 +83,14 @@
 @import url(./blocks/popup/__title/popup__title.css);
 @import url(./blocks/popup/__close-button/popup__close-button.css);
 @import url(./blocks/popup/__switch-forms-button/popup__switch-forms-button.css);
+@import url(./blocks/popup/_type/popup_type_centered.css);
+
+@import url(./components/MenuPopup/MenuPopup.css);
+@import url(./components/MenuPopup/__container/menu-popup__container.css);
+@import url(./components/MenuPopup/__header/menu-popup__header.css);
+@import url(./components/MenuPopup/__close-button/menu-popup__close-button.css);
+@import url(./components/MenuPopup/__navigation/menu-popup__navigation.css);
+@import url(./components/MenuPopup/__location/popup-menu__location.css);
 
 @import url(./blocks/form/form.css);
 @import url(./blocks/form/__title/form__title.css);

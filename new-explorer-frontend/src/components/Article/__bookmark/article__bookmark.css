@@ -18,3 +18,10 @@
 .article__bookmark:hover {
   background-image: url(../../../images/bookmark-hover.svg);
 }
+
+@media screen and (max-width: 768px) {
+  .article__bookmark {
+    top: 8px;
+    right: 8px;
+  }
+}

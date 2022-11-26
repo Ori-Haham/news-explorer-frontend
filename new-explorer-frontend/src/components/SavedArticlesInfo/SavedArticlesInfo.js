@@ -8,7 +8,10 @@ export default function SavedArticlesInfo() {
         Elise, you have 5 saved articles
       </h4>
       <p className='saved-articles-info__key-words'>
-        By keywords: Nature, Yellowstone, and 2 other
+        By keywords:{' '}
+        <span className='saved-articles-info__key-words-list'>
+          Nature, Yellowstone, and 2 other
+        </span>
       </p>
     </section>
   );

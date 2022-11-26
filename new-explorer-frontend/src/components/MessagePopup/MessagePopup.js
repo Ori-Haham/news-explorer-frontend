@@ -1,6 +1,10 @@
 export default function MessagePopup(props) {
   return (
-    <div className={props.isOpen ? `popup` : `popup popup-hidden`}>
+    <div
+      className={
+        props.isOpen ? `popup popup_type_centered` : `popup popup-hidden`
+      }
+    >
       <div className='popup__container'>
         <button
           onClick={props.onClose}

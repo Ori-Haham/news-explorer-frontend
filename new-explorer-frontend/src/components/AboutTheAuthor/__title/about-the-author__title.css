@@ -6,3 +6,17 @@
   line-height: 46px;
   font-family: 'Roboto-slab', sans-serif;
 }
+
+@media screen and (max-width: 870px) {
+  .about-the-author__title {
+    margin: 0;
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .about-the-author__title {
+    margin: 0;
+  }
+}

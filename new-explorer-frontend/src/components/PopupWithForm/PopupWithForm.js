@@ -7,7 +7,9 @@ export default function PopupWithForm({
   isOpen,
 }) {
   return (
-    <div className={isOpen ? `popup` : `popup popup-hidden`}>
+    <div
+      className={isOpen ? `popup popup_type_centered` : `popup popup-hidden`}
+    >
       <div className='popup__container'>
         <button
           onClick={onClose}
