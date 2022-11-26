@@ -8,6 +8,13 @@
   list-style-type: none;
 }
 
+@media screen and (max-width: 1440px) {
+  .articles__list {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .articles__list {
     padding: 32px 0;
