@@ -1,8 +1,9 @@
 .articles__list {
+  width: 100%;
   margin: 0;
   padding: 64px 0;
   display: flex;
-  gap: 16px;
+  justify-content: space-between;
   flex-wrap: wrap;
   list-style-type: none;
 }
