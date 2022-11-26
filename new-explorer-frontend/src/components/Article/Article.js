@@ -56,5 +56,5 @@ export default function Article(props) {
     </article>
   );
 
-  return <li>{article}</li>;
+  return <li className='article__list-item'>{article}</li>;
 }
