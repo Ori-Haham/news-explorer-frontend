@@ -11,7 +11,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
   .about-the-author {
     width: 90%;
     padding: 40px 5% 60px;

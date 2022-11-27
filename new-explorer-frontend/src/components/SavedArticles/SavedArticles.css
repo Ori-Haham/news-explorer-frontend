@@ -1,3 +1,8 @@
 .saved-articles {
-  max-width: px;
+  max-width: 1920px;
+  width: 100%;
+  font-display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

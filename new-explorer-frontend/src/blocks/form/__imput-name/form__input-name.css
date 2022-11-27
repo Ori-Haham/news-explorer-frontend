@@ -6,3 +6,9 @@
   font-family: 'Inter', Arial, sans-serif;
   color: #2f71e5;
 }
+
+@media screen and (max-width: 580px) {
+  .popup__container {
+    margin: 18px 0 0;
+  }
+}

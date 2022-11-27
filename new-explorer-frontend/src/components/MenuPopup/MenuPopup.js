@@ -1,8 +1,14 @@
 import Logo from '../Logo/Logo';
 
+import { Link } from 'react-router-dom';
 import closeIcon from '../../images/close.svg';
 
 export default function MenuPopup(props) {
+  function handleButtonClick() {
+    props.openSignInPopup();
+    props.onClose();
+  }
+
   return (
     <div className={props.isOpen ? 'popup menu-popup' : 'popup popup-hidden'}>
       <div className='menu-popup__container'>
@@ -15,8 +21,15 @@ export default function MenuPopup(props) {
           />
         </div>
         <nav className='menu-popup__navigation'>
-          <p className='popup-menu__location'>home</p>
-          <button className='button button__place_menu-popup'>Sign in</button>
+          <Link to='/' className='popup-menu__location' onClick={props.onClose}>
+            home
+          </Link>
+          <button
+            className='button button__place_menu-popup'
+            onClick={handleButtonClick}
+          >
+            Sign in
+          </button>
         </nav>
       </div>
     </div>

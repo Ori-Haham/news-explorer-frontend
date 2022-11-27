@@ -28,6 +28,7 @@ export default function Header({ isHome, openSignin, openMenuPopup }) {
           className='header__menu-icon'
           onClick={openMenuPopup}
           src={isHome ? menuIconWhite : menuIconBlack}
+          alt='menu icon'
         />
       )}
     </header>

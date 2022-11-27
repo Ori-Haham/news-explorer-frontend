@@ -4,7 +4,7 @@
   color: #1a1b22;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
   .saved-articles-info {
     width: 90%;
     padding: 24px 5% 32px;

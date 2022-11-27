@@ -5,8 +5,20 @@
   border-radius: 10px 10px 0 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1439.5px) {
   .article__image {
     height: 150px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .article__image {
+    height: 272px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .article__image {
+    height: 196px;
   }
 }

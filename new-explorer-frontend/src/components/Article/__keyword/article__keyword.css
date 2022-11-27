@@ -13,10 +13,26 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1439.5px) {
   .article__keyword {
     padding: 8px 20px;
     left: 8px;
     top: 8px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .article__keyword {
+    padding: 8px 22px;
+    left: 24px;
+    top: 24px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .article__keyword {
+    padding: 8px 20px;
+    left: 16px;
+    top: 16px;
   }
 }

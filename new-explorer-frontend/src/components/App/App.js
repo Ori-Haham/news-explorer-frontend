@@ -99,7 +99,11 @@ function App() {
         onSwitchPopupClick={openSignInPopup}
       ></SignUpPopup>
       <MessagePopup isOpen={isMessageOpen} onClose={closeMessage} />
-      <MenuPopup isOpen={isMenuPopupOpen} onClose={closeMenuPopup} />
+      <MenuPopup
+        isOpen={isMenuPopupOpen}
+        onClose={closeMenuPopup}
+        openSignInPopup={openSignInPopup}
+      />
     </div>
   );
 }
