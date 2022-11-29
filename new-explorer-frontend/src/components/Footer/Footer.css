@@ -1,25 +1,13 @@
 .footer {
-  height: 80px;
-  width: 85.6%;
-  padding: 0 7.2%;
+  max-width: 1440px;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-}
-
-@media screen and (max-width: 850px) {
-  .footer {
-    width: 90%;
-    height: 64px;
-    padding: 0 5%;
-  }
 }
 
 @media screen and (max-width: 700px) {
   .footer {
-    height: 132px;
-    padding: 20px 5% 22px;
-    display: grid;
-    grid-template-rows: 74px 22px;
-    align-items: flex-start;
+    padding: 20px 0 22px;
   }
 }

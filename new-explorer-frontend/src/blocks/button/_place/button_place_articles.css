@@ -23,7 +23,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .button_place_articles {
     max-width: 288px;
     margin: 0 auto 24px;

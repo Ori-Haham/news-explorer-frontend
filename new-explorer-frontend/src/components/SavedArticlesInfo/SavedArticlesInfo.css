@@ -1,12 +1,18 @@
 .saved-articles-info {
-  width: 85.6%;
-  padding: 40px 7.2% 56px;
+  max-width: 1440px;
+  width: 100%;
+  padding: 40px 0 56px;
   color: #1a1b22;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 768px) {
   .saved-articles-info {
-    width: 90%;
-    padding: 24px 5% 32px;
+    padding: 24px 0 32px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .saved-articles-info {
+    padding: 8px 0 32px;
   }
 }

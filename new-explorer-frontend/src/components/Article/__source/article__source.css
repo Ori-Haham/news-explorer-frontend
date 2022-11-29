@@ -1,5 +1,4 @@
 .article__source {
-  height: 20px;
   margin: 18px 0 0;
   padding: 0;
   font-weight: 700;
@@ -12,22 +11,24 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  min-width: 192px;
 }
 
-@media screen and (max-width: 1439.5px) {
+@media screen and (max-width: 1024px) {
+  .article__source {
+    max-width: 192px;
+    margin: 12px 0 0;
+  }
+}
+
+@media screen and (max-width: 962px) {
   .article__source {
     margin: 12px 0 0;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 560px) {
   .article__source {
-    margin: 18px 0 0;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .article__source {
-    margin: 8px 0 0;
+    margin: 31px 0 0;
   }
 }

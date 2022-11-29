@@ -20,17 +20,17 @@ export default function ArticleList(props) {
 
   return (
     <section className='articles'>
-      {props.isHome && <h3 className='articles__headline'>Search results</h3>}
-
-      <ul className='articles__list'>
-        {props.isHome ? cardsList.slice(2) : cardsList}
-      </ul>
-
-      {props.isHome && (
-        <Link className='button button_place_articles' to='/articles'>
-          Show more
-        </Link>
-      )}
+      <div className='articles__container'>
+        {props.isHome && <h3 className='articles__headline'>Search results</h3>}
+        <ul className='articles__list'>
+          {props.isHome ? cardsList.slice(2) : cardsList}
+        </ul>
+        {props.isHome && (
+          <Link className='button button_place_articles' to='/articles'>
+            Show more
+          </Link>
+        )}
+      </div>
     </section>
   );
 }

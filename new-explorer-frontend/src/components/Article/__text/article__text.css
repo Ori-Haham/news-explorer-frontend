@@ -13,11 +13,17 @@
   text-overflow: ellipsis;
 }
 
-@media screen and (max-width: 1439.5px) {
+@media screen and (max-width: 1024px) {
+  .article__text {
+    margin: 16px 0 0;
+  }
+}
+
+@media screen and (max-width: 962px) {
   .article__text {
     height: 88px;
-    margin: 10px 0 0;
     -webkit-line-clamp: 4;
+    margin: 10px 0 0;
   }
 }
 
@@ -29,7 +35,7 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 560px) {
   .article__text {
     height: 88px;
     margin: 14px 0 0;

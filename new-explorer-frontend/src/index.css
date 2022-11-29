@@ -4,6 +4,7 @@
 @import url(./components/App/App.css);
 
 @import url(./components/Header/Header.css);
+@import url(./components/Header/__container/header__container.css);
 @import url(./components/Header/_place/header_place_saved-articles.css);
 @import url(./components/Header/__navigation-container/header__navigation-container.css);
 @import url(./components/Header/header__headline.css);
@@ -44,16 +45,19 @@
 @import url(./components/Article/__source/article__source.css);
 
 @import url(./components/Articles/Articles.css);
+@import url(./components/Articles/__container/articles__container.css);
 @import url(./components/Articles/__list/atricles__list.css);
 @import url(./components/Articles/__headline/articles__headline.css);
 
 @import url(./components/AboutTheAuthor/AboutTheAuthor.css);
+@import url(./components/AboutTheAuthor/__container/about-the-author__container.css);
 @import url(./components/AboutTheAuthor/__img/about-the-author__img.css);
 @import url(./components/AboutTheAuthor/__text-container/about-the-author__text-container.css);
 @import url(./components/AboutTheAuthor/__title/about-the-author__title.css);
 @import url(./components/AboutTheAuthor/__text/about-the-author__text.css);
 
 @import url(./components/Footer/Footer.css);
+@import url(./components/Footer/__container/footer__container.css);
 @import url(./components/Footer/__copyright/footer__copyright.css);
 @import url(./components/Footer/__links-container/footer__links-container.css);
 @import url(./components/Footer/__text-links/footer__text-links.css);
@@ -63,6 +67,7 @@
 @import url(./components/SavedArticles/SavedArticles.css);
 
 @import url(./components/SavedArticlesInfo/SavedArticlesInfo.css);
+@import url(./components/SavedArticlesInfo/__container/saved-articles-info__container.css);
 @import url(./components/SavedArticlesInfo/__title/saved-articles-info__title.css);
 @import url(./components/SavedArticlesInfo/__subtitle/saved-articles-info__subtitle.css);
 @import url(./components/SavedArticlesInfo/__key-words/saved-articles-info__key-words.css);

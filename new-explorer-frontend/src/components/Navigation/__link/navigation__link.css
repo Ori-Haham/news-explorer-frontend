@@ -1,5 +1,6 @@
 .navigation__link {
-  padding: 30px 12px;
+  height: 100%;
+  padding: 26px 12px;
   text-decoration: none;
   border: 0;
   cursor: pointer;
@@ -16,7 +17,7 @@
 
 @media screen and (max-width: 768px) {
   .navigation__link {
-    padding: 22px 12px;
+    padding: 20px 12px;
     font-size: 16px;
   }
 }

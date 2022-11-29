@@ -17,15 +17,10 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .about-the-author__img {
+    margin: 0 auto;
     width: 272px;
     height: 272px;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .about-the-author {
-    margin: 0;
   }
 }

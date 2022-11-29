@@ -4,7 +4,7 @@
 
 @media screen and (max-width: 680px) {
   .header__menu-icon {
-    margin: 0 0 0 auto;
+    margin: 16px 0 16px auto;
     cursor: pointer;
     transition: opacity linear 0.3s;
   }

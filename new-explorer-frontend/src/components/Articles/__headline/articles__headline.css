@@ -1,4 +1,5 @@
 .articles__headline {
+  max-width: 1232px;
   margin: 0;
   padding: 80px 0 0;
   font-weight: 400;
@@ -15,7 +16,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .articles__headline {
     padding: 32px 0 0;
   }

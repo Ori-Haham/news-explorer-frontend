@@ -1,19 +1,12 @@
 .article__text-container {
-  width: 352px;
+  max-width: 352px;
+
   padding: 20px 24px 24px;
 }
 
-@media screen and (max-width: 1439.5px) {
+@media screen and (max-width: 962px) {
   .article__text-container {
-    width: 192px;
     padding: 16px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .article__text-container {
-    width: 352px;
-    padding: 20px 24px 24px;
   }
 }
 

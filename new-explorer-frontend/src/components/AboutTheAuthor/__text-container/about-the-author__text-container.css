@@ -10,9 +10,8 @@
   }
 }
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 767px) {
   .about-the-author__text-container {
-    max-width: 288px;
     margin: 24px 0 0;
   }
 }

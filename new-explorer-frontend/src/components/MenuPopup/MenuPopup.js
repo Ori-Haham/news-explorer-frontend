@@ -21,6 +21,13 @@ export default function MenuPopup(props) {
           />
         </div>
         <nav className='menu-popup__navigation'>
+          <Link
+            to='/articles'
+            className='popup-menu__location'
+            onClick={props.onClose}
+          >
+            articles
+          </Link>
           <Link to='/' className='popup-menu__location' onClick={props.onClose}>
             home
           </Link>

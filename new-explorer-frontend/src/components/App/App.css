@@ -1,7 +1,13 @@
 .app {
   max-width: 1920px;
   width: 100%;
-  margin: auto;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -ms-font-feature-settings: 'kern' 1;
+  font-feature-settings: 'kern';
   display: flex;
   flex-direction: column;
   align-items: center;

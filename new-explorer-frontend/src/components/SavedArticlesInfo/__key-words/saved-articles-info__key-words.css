@@ -10,3 +10,9 @@
     margin: 16px 0 0;
   }
 }
+
+@media screen and (max-width: 560px) {
+  .saved-articles-info__key-words {
+    margin: 50px 0 0;
+  }
+}
