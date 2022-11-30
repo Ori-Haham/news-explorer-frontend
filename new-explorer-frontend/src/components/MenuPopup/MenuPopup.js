@@ -18,6 +18,7 @@ export default function MenuPopup(props) {
             className='menu-popup__close-button'
             onClick={props.onClose}
             src={closeIcon}
+            alt='close button icon'
           />
         </div>
         <nav className='menu-popup__navigation'>

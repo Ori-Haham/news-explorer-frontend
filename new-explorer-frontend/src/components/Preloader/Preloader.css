@@ -1,0 +1,8 @@
+.preloader {
+  margin: 0;
+  width: 100wv;
+  min-height: 100vh;
+  background-color: black;
+
+  overflow: hidden;
+}

@@ -9,16 +9,18 @@ import Footer from '../Footer/Footer';
 import SignInPopup from '../SignInPopup/SignInPopup';
 import SignUpPopup from '../SignUpPopup/SignUpPopup';
 import MessagePopup from '../MessagePopup/MessagePopup';
-import PageNotFound from '../PageNotFound/PageNotFound';
+import NotFound from '../NotFound/NotFound';
 import MenuPopup from '../MenuPopup/MenuPopup';
+import Preloader from '../Preloader/Preloader';
 
 import '../../index.css';
 
 function App() {
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);
-  const [isMessageOpen, setIsMessageOpen] = useState(true);
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
   const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
+  const [Isloding, setIsLoding] = useState(true);
 
   useEffect(() => {
     const close = (e) => {
@@ -85,7 +87,7 @@ function App() {
           <Footer />
         </Route>
         <Route path={'*'}>
-          <PageNotFound />
+          <NotFound />
         </Route>
       </Switch>
       <SignInPopup

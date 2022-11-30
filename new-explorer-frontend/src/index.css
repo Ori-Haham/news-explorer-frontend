@@ -73,7 +73,10 @@
 @import url(./components/SavedArticlesInfo/__key-words/saved-articles-info__key-words.css);
 @import url(components/SavedArticlesInfo/__key-words-list/saved-articles-info__key-words-list.css);
 
-@import url(./components/PageNotFound/PageNotFound.css);
+@import url(./components/NotFound/NotFound.css);
+
+@import url(./components/Preloader/Preloader.css);
+@import url(./components/Preloader/__circle/preloader__circle.css);
 
 @import url(./blocks/button/button.css);
 @import url(./blocks/button/_place/button_place_search-section.css);
