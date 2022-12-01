@@ -1,6 +1,8 @@
-export default function SearchSection() {
-  function handleSearch(evt) {
+export default function SearchSection(props) {
+  async function handleSearch(evt) {
     evt.preventDefault();
+    await props.handleLoding();
+    props.IsNotFoundOpen(true);
   }
 
   return (

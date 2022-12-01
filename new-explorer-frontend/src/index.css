@@ -74,9 +74,13 @@
 @import url(components/SavedArticlesInfo/__key-words-list/saved-articles-info__key-words-list.css);
 
 @import url(./components/NotFound/NotFound.css);
+@import url(./components/NotFound/__image/not-found__image.css);
+@import url(./components/NotFound/__title/not-found__title.css);
+@import url(./components/NotFound/__message/not-found__message.css);
 
 @import url(./components/Preloader/Preloader.css);
 @import url(./components/Preloader/__circle/preloader__circle.css);
+@import url(./components/Preloader/__message/preloader__message.css);
 
 @import url(./blocks/button/button.css);
 @import url(./blocks/button/_place/button_place_search-section.css);

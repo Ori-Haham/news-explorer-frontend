@@ -20,7 +20,8 @@ function App() {
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);
   const [isMessageOpen, setIsMessageOpen] = useState(false);
   const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
-  const [Isloding, setIsLoding] = useState(true);
+  const [isNotFoundOpen, setIsNotFoundOpen] = useState(false);
+  const [Isloding, setIsLoding] = useState(false);
 
   useEffect(() => {
     const close = (e) => {
@@ -66,6 +67,13 @@ function App() {
     setIsMenuPopupOpen(false);
   }
 
+  function handleLoding() {
+    setIsLoding(true);
+    setTimeout(() => {
+      setIsLoding(false);
+    }, 2000);
+  }
+
   return (
     <div className='app'>
       <Switch>
@@ -76,8 +84,13 @@ function App() {
               openSignin={openSignInPopup}
               openMenuPopup={openMenuPopup}
             />
-            <SearchSection />
+            <SearchSection
+              handleLoding={handleLoding}
+              IsNotFoundOpen={setIsNotFoundOpen}
+            />
           </div>
+          {Isloding && <Preloader />}
+          {isNotFoundOpen && <NotFound />}
           <Main />
           <Footer />
         </Route>
@@ -85,9 +98,6 @@ function App() {
           <Header openSignin={openSignInPopup} openMenuPopup={openMenuPopup} />
           <SavedArticles />
           <Footer />
-        </Route>
-        <Route path={'*'}>
-          <NotFound />
         </Route>
       </Switch>
       <SignInPopup
