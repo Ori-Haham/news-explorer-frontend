@@ -21,7 +21,7 @@ export default function SignInPopup(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    props.handlRegister(email, password);
+    props.handleSignup(email, password, userName);
   }
 
   return (
