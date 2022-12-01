@@ -1,0 +1,35 @@
+.article__message {
+  padding: 8px 22px;
+  margin: 0;
+  position: absolute;
+  right: 69px;
+  top: 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  background-color: white;
+  color: black;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .article__message {
+    right: 8px;
+    top: 53px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .article__message {
+    right: 69px;
+    top: 24px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .article__message {
+    right: 16px;
+    top: 61px;
+  }
+}

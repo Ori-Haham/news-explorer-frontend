@@ -1,0 +1,8 @@
+.header__headline {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  font-family: 'Roboto-slab', sans-serif;
+}

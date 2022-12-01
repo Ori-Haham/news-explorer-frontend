@@ -1,0 +1,17 @@
+.header__menu-icon:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 680px) {
+  .header__menu-icon {
+    margin: 16px 0 16px auto;
+    cursor: pointer;
+    transition: opacity linear 0.3s;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .header__menu-icon:hover {
+    opacity: 0.6;
+  }
+}

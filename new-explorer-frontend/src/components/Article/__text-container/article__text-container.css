@@ -1,0 +1,18 @@
+.article__text-container {
+  max-width: 352px;
+
+  padding: 20px 24px 24px;
+}
+
+@media screen and (max-width: 962px) {
+  .article__text-container {
+    padding: 16px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .article__text-container {
+    width: 256px;
+    padding: 16px;
+  }
+}

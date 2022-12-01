@@ -1,0 +1,41 @@
+.article__delete-button {
+  width: 40px;
+  height: 40px;
+  margin: 0 0 0 auto;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background-image: url(../../../images/trash.svg);
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-image linear 0.3s;
+}
+
+.article__delete-button:hover {
+  background-image: url(../../../images/trash-hover.svg);
+}
+
+@media screen and (max-width: 1024px) {
+  .article__delete-button {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .article__delete-button {
+    top: 24px;
+    right: 24px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .article__delete-button {
+    top: 16px;
+    right: 16px;
+  }
+}

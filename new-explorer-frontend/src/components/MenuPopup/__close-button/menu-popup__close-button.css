@@ -1,0 +1,9 @@
+.menu-popup__close-button {
+  width: 24px;
+  height: 24px;
+  transform: opacity linear 0.3s;
+}
+
+.menu-popup__close-button:hover {
+  opacity: 0.6;
+}

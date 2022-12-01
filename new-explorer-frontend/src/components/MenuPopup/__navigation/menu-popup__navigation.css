@@ -1,0 +1,5 @@
+.menu-popup__navigation {
+  padding: 16px 5% 24px;
+  display: flex;
+  flex-direction: column;
+}

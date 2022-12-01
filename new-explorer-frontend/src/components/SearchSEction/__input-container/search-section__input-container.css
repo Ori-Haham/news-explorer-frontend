@@ -1,0 +1,17 @@
+.search-section__input-container {
+  margin: 88px 0 0;
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .search-section__input-container {
+    margin: 48px 0 0;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .search-section__input-container {
+    margin: 122px 0 0;
+    display: block;
+  }
+}

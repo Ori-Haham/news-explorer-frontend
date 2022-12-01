@@ -1,0 +1,33 @@
+.button_place_search-section {
+  width: 168px;
+  height: 66px;
+  margin: 0 0 0 -150px;
+  background-color: #2f71e5;
+  color: white;
+  border: none;
+  z-index: 1;
+  transition: background-color linear 0.1s;
+}
+
+.button_place_search-section:hover {
+  background-color: #347eff;
+}
+
+.button_place_search-section:active {
+  background-color: #2a65cc;
+}
+
+@media screen and (max-width: 768px) {
+  .button_place_search-section {
+    width: 160px;
+    height: 58px;
+    margin: 0 0 0 -142px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .button_place_search-section {
+    width: 100%;
+    margin: 16px 0 0;
+  }
+}

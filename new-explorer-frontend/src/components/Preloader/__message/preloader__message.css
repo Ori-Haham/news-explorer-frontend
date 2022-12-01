@@ -1,0 +1,8 @@
+.preloader__message {
+  font-weight: 400;
+  margin: 24px 0 0;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #b6bcbf;
+}

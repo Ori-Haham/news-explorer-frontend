@@ -1,0 +1,18 @@
+.saved-articles-info {
+  max-width: 1440px;
+  width: 100%;
+  padding: 40px 0 56px;
+  color: #1a1b22;
+}
+
+@media screen and (max-width: 768px) {
+  .saved-articles-info {
+    padding: 24px 0 32px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .saved-articles-info {
+    padding: 8px 0 32px;
+  }
+}

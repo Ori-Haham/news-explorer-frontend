@@ -1,0 +1,15 @@
+.saved-articles-info__subtitle {
+  margin: 28px 0 0;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  font-family: 'Roboto-slab', sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  .saved-articles-info__subtitle {
+    margin: 16px 0 0;
+    font-size: 30px;
+    line-height: 34px;
+  }
+}

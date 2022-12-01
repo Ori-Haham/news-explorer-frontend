@@ -1,0 +1,31 @@
+.button_place_articles {
+  max-width: 288px;
+  width: 100%;
+  margin: 0 auto 80px;
+  padding: 20px 0;
+  background-color: white;
+  color: #1a1b22;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  transition: background-color linear 0.2s;
+}
+
+.button_place_articles:hover {
+  background-color: #e8e8e8;
+}
+
+@media screen and (max-width: 768px) {
+  .button_place_articles {
+    margin: 0 auto 40px;
+    max-width: 240px;
+    padding: 16px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .button_place_articles {
+    max-width: 288px;
+    margin: 0 auto 24px;
+  }
+}

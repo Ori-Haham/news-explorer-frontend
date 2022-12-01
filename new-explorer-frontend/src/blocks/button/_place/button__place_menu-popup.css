@@ -1,0 +1,13 @@
+.button__place_menu-popup {
+  margin: 22px 0 0;
+  background-color: transparent;
+  width: 90%;
+  padding: 16px 0;
+  color: white;
+  border: 1px solid white;
+  transition: opacity linear 0.3s;
+}
+
+.button__place_menu-popup:hover {
+  opacity: 0.6;
+}

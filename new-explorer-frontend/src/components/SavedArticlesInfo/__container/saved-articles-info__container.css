@@ -1,0 +1,16 @@
+.saved-articles-info__container {
+  max-width: 1232px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1280px) {
+  .saved-articles-info__container {
+    width: calc(100% - 80px);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .saved-articles-info__container {
+    width: calc(100% - 32px);
+  }
+}
