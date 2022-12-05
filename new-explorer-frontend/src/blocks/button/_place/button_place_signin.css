@@ -13,6 +13,10 @@
   background-color: #347eff;
 }
 
+.button_place_signin:disabled {
+  background-color: #e6e8eb;
+}
+
 @media screen and (max-width: 580px) {
   .button_place_signin {
     margin: 23px 0 0;

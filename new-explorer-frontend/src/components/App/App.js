@@ -1,6 +1,5 @@
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import React from 'react';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -13,11 +12,14 @@ import MessagePopup from '../MessagePopup/MessagePopup';
 import NotFound from '../NotFound/NotFound';
 import MenuPopup from '../MenuPopup/MenuPopup';
 import Preloader from '../Preloader/Preloader';
+import { CurrentUserContext } from '../../context/CurrentUserContext/CurrentUserContext';
 
 import auth from '../../utils/auth';
+import newsApi from '../../utils/NewsApi';
+import mainApi from '../../utils/MainApi';
 
 import '../../index.css';
-const CurrentUserContext = React.createContext();
+
 function App() {
   const history = useHistory();
 
@@ -28,6 +30,9 @@ function App() {
   const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
   const [isNotFoundOpen, setIsNotFoundOpen] = useState(false);
   const [Isloding, setIsLoding] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const [savedArticles, setSavedArticles] = useState([]);
 
   useEffect(() => {
     const close = (e) => {
@@ -38,6 +43,19 @@ function App() {
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
   }, [SignInPopup]);
+
+  useEffect(() => {
+    if (isLoggedIn === true) {
+      mainApi
+        .getSavedArticles()
+        .then((data) => {
+          setSavedArticles(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isLoggedIn]);
 
   function openSignInPopup() {
     setIsSignInPopupOpen(true);
@@ -68,29 +86,14 @@ function App() {
     setIsMenuPopupOpen(false);
   }
 
-  function handleLoding() {
-    setIsLoding(true);
-    setTimeout(() => {
-      setIsLoding(false);
-    }, 2000);
-  }
-
   function handleSignup(email, password, name) {
     auth
       .register(email, password, name)
-      .then((res) => {
-        // if (res.userObj.email === email) {
-        console.log(res);
-        setIsMessageOpen(true);
+      .then(() => {
         closeSignUpPopup();
-        openSignInPopup();
-        // }
-        // else {
-        //   openErrormessage();
-        // }
+        setIsMessageOpen(true);
       })
       .catch((err) => {
-        // openErrormessage();
         console.log(err);
       });
   }
@@ -100,9 +103,9 @@ function App() {
       .authorize(email, password)
       .then((res) => {
         if (res.token) {
-          console.log(1, res);
           localStorage.removeItem('jwt');
           localStorage.setItem('jwt', res.token);
+          closeSignInPopup();
         }
         // else {
         //   openErrormessage();
@@ -123,47 +126,83 @@ function App() {
       auth
         .getAuthorizedContent(jwt)
         .then((data) => {
-          setUserData(2, data);
+          setUserData(data);
         })
         .then(() => {
           // getInitialCard();
         })
         .then(() => {
-          // pushHomePage();
+          setIsLoggedIn(true);
         })
         .catch((err) => console.log(err));
     }
   }
 
+  function handleLogOut() {
+    setIsLoggedIn(false);
+    history.push('/');
+  }
+
+  function handleSearch(keyword) {
+    newsApi
+      .getArticles(keyword)
+      .then((data) => {
+        setIsNotFoundOpen(false);
+        setIsLoding(true);
+        setSearchResults(() => {
+          const newArr = data.articles.map((v) => {
+            return { ...v, keyword };
+          });
+          return newArr;
+        });
+      })
+      .then(() => {
+        setIsLoding(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsNotFoundOpen(true);
+      });
+  }
+
+  const homePage = (
+    <Route exact path={'/'}>
+      <div className='home-cover-img'>
+        <Header
+          isHome={true}
+          openSignin={openSignInPopup}
+          openMenuPopup={openMenuPopup}
+          isLoggedIn={isLoggedIn}
+          onLogOut={handleLogOut}
+        />
+        <SearchSection onSearch={handleSearch} />
+      </div>
+      {Isloding && <Preloader />}
+      {isNotFoundOpen && <NotFound />}
+      <Main searchResults={searchResults}></Main>
+      <Footer />
+    </Route>
+  );
+
+  const SavedArticlesPage = (
+    <Route path={'/articles'}>
+      <Header
+        openSignin={openSignInPopup}
+        openMenuPopup={openMenuPopup}
+        isLoggedIn={isLoggedIn}
+        onLogOut={handleLogOut}
+      />
+      <SavedArticles savedArticles={savedArticles} />
+      <Footer />
+    </Route>
+  );
+
   return (
     <CurrentUserContext.Provider value={userData}>
       <div className='app'>
         <Switch>
-          <Route exact path={'/'}>
-            <div className='home-cover-img'>
-              <Header
-                isHome={true}
-                openSignin={openSignInPopup}
-                openMenuPopup={openMenuPopup}
-              />
-              <SearchSection
-                handleLoding={handleLoding}
-                IsNotFoundOpen={setIsNotFoundOpen}
-              />
-            </div>
-            {Isloding && <Preloader />}
-            {isNotFoundOpen && <NotFound />}
-            <Main />
-            <Footer />
-          </Route>
-          <Route path={'/articles'}>
-            <Header
-              openSignin={openSignInPopup}
-              openMenuPopup={openMenuPopup}
-            />
-            <SavedArticles />
-            <Footer />
-          </Route>
+          {homePage}
+          {isLoggedIn ? SavedArticlesPage : <Redirect to='/' />}
         </Switch>
         <SignInPopup
           isOpen={isSignInPopupOpen}
@@ -177,12 +216,16 @@ function App() {
           onSwitchPopupClick={openSignInPopup}
           handleSignup={handleSignup}
         ></SignUpPopup>
-        <MessagePopup isOpen={isMessageOpen} onClose={closeMessage} />
-        <MenuPopup
-          isOpen={isMenuPopupOpen}
-          onClose={closeMenuPopup}
-          openSignInPopup={openSignInPopup}
-        />
+        {isMessageOpen && (
+          <MessagePopup
+            isOpen={isMenuPopupOpen}
+            onClose={closeMessage}
+            openSignInPopup={openSignInPopup}
+          />
+        )}
+        (
+        <MenuPopup onClose={closeMenuPopup} openSignInPopup={openSignInPopup} />
+        )
       </div>
     </CurrentUserContext.Provider>
   );

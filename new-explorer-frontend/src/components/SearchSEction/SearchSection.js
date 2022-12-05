@@ -1,8 +1,15 @@
+import { useState } from 'react';
+
 export default function SearchSection(props) {
-  async function handleSearch(evt) {
+  const [keyWord, setKeyWord] = useState('');
+
+  function handleKeyWordChange(evt) {
+    setKeyWord(evt.target.value);
+  }
+
+  function handleSearch(evt) {
     evt.preventDefault();
-    await props.handleLoding();
-    props.IsNotFoundOpen(true);
+    props.onSearch(keyWord);
   }
 
   return (
@@ -12,10 +19,12 @@ export default function SearchSection(props) {
         Find the latest news on any topic and save them in your personal
         account.
       </p>
-      <form className='search-section__input-container'>
+      <form className='search-section__input-container' onSubmit={handleSearch}>
         <input
           className='search-section__input'
           placeholder='Enter topic'
+          value={keyWord}
+          onChange={handleKeyWordChange}
         ></input>
         <button
           className='button button_place_search-section'

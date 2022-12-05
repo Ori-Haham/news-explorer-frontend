@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 //     : 'navigation__link navigation__link_place_articles';
 // }}
 
-export default function Nvigation({ isHome }) {
+export default function Nvigation({ isHome, isLoggedIn }) {
   return (
     <nav className='navigation'>
       <Link
@@ -23,16 +23,18 @@ export default function Nvigation({ isHome }) {
       >
         Home
       </Link>
-      <Link
-        className={
-          isHome
-            ? 'navigation__link navigation__link_place_home'
-            : 'navigation__link navigation__link_place_articles navigation__link_active-black'
-        }
-        to='/articles'
-      >
-        Saved articles
-      </Link>
+      {isLoggedIn && (
+        <Link
+          className={
+            isHome
+              ? 'navigation__link navigation__link_place_home'
+              : 'navigation__link navigation__link_place_articles navigation__link_active-black'
+          }
+          to='/articles'
+        >
+          Saved articles
+        </Link>
+      )}
     </nav>
   );
 }

@@ -1,32 +1,79 @@
+import React from 'react';
+import { CurrentUserContext } from '../../context/CurrentUserContext/CurrentUserContext';
 import { useState } from 'react';
 
+import mainApi from '../../utils/MainApi';
+
 export default function Article(props) {
+  const currentUser = React.useContext(CurrentUserContext);
+
   const [isChecked, setIsChecked] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
   function handleSaveArticle() {
-    setIsChecked((state) => {
-      return !state;
-    });
+    mainApi
+      .postArticle(
+        props.keyword,
+        props.title,
+        props.text,
+        props.date,
+        props.source,
+        props.link,
+        props.image,
+      )
+      .then((article) => {
+        console.log(article);
+        setIsChecked((state) => {
+          return !state;
+        });
+      })
+      .catch((err) => {
+        console.log(props.keyWord);
+        console.log(err);
+      });
   }
 
   function handleHover() {
     setIsHover((state) => {
+      console.log(props._id);
       return !state;
     });
+  }
+
+  // function handleDeleteArticle() {
+  //   props.onDeleteArticle(props._id);
+  // }
+
+  function handleArticleDelete() {
+    const setUpdatedArticlesList = () => {
+      props.setSavedArticles((state) =>
+        state.filter((ArticleInList) => {
+          return ArticleInList._id !== props._id;
+        }),
+      );
+    };
+
+    mainApi
+      .deleteArticle(props._id)
+      .then(setUpdatedArticlesList)
+      .catch((err) => {
+        console.log(`Oops, error: ${err} !`);
+        console.log(props._id);
+      });
   }
 
   const article = (
     <article className='article'>
       <div className='article__image-container'>
         <img className='article__image' src={props.image} alt='article image' />
-        {isHover && (
-          <div className='article__message'>
-            {props.isHome ? 'Sign in to save articles' : 'Remove from saved'}
-          </div>
+        {isHover && !props.isHome && (
+          <div className='article__message'>Remove from saved</div>
+        )}
+        {isHover && props.isHome && !props.isLoggedIn && (
+          <div className='article__message'>Sign in to save articles</div>
         )}
         {!props.isHome && <p className='article__keyword'>{props.keyword}</p>}
-        {props.isHome ? (
+        {props.isHome && (
           <button
             className={
               isChecked
@@ -35,14 +82,16 @@ export default function Article(props) {
             }
             onMouseEnter={handleHover}
             onMouseOut={handleHover}
-            onClick={handleSaveArticle}
+            onClick={handleSaveArticle()}
             type='button'
           />
-        ) : (
+        )}
+        {!props.isHome && (
           <button
             className='article__delete-button'
             onMouseEnter={handleHover}
             onMouseOut={handleHover}
+            onClick={handleArticleDelete()}
             type='button'
           />
         )}

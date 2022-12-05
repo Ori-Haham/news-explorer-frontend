@@ -1,0 +1,5 @@
+.header__button_type_log-out {
+  padding: 12px 50px 12px 19px;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+}

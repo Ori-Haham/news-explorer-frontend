@@ -5,7 +5,12 @@ export default function PopupWithForm({
   title,
   children,
   isOpen,
+  resetForm,
 }) {
+  // function handleOnClose() {
+  //   onClose();
+  //   resetForm();
+  // }
   return (
     <div
       className={isOpen ? `popup popup_type_centered` : `popup popup-hidden`}
