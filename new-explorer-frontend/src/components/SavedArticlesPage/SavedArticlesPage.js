@@ -4,16 +4,15 @@ import SavedArticles from '../SavedArticles/SavedArticles';
 export default function SavedArticlesPage({
   savedArticles,
   onDeleteArticle,
-  setSavedArticles,
+  onSubmit,
+  onDelete,
 }) {
   return (
     <div className='saved-articles'>
       <SavedArticlesInfo savedArticles={savedArticles} />
-      <SavedArticles
-        savedArticles={savedArticles}
-        setSavedArticles={setSavedArticles}
-        // onDeleteArticle={onDeleteArticle}
-      />
+      {savedArticles.length > 0 && (
+        <SavedArticles savedArticles={savedArticles} onDelete={onDelete} />
+      )}
     </div>
   );
 }

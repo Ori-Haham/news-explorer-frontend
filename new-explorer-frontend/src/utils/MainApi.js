@@ -42,7 +42,7 @@ class MainApi {
       headers: {
         Authorization: this._authorization,
       },
-    });
+    }).then(this._checkResponse);
   }
 }
 

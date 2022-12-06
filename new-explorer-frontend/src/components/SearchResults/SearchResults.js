@@ -13,31 +13,37 @@ export default function SearchResults(props) {
     });
   }
 
-  function y() {
-    const searchResults = props.searchResults.map((article, index) => (
-      <Article
-        key={index}
-        isHome={true}
-        keyword={article.keyword}
-        title={article.title}
-        text={article.content}
-        date={article.publishedAt}
-        source={article.source.name}
-        link={article.url}
-        image={article.urlToImage}
-        isLoggedIn={props.isLoggedIn}
-      />
-    ));
-    return showMore ? searchResults : searchResults.slice(0, 3);
-  }
+  const searchResults = props.searchResults.map((article, index) => (
+    <Article
+      key={index}
+      isHome={true}
+      isLoggedIn={props.isLoggedIn}
+      onSubmit={props.onSubmit}
+      onDelete={props.onDelete}
+      savedArticles={props.savedArticles}
+      article={{
+        keyword: article.keyword,
+        title: article.title,
+        text: article.content,
+        date: article.publishedAt,
+        source: article.source.name,
+        link: article.url,
+        image: article.urlToImage,
+      }}
+    />
+  ));
 
   return (
     <Articles>
       <h3 className='articles__headline'>Search results</h3>
-      <ArticlesList list={y()} />
+      <ArticlesList
+        list={showMore ? searchResults : searchResults.slice(0, 3)}
+      />
       <button
         className='button button_place_articles'
-        onClick={handleShowMoreClick}
+        onClick={() => {
+          handleShowMoreClick();
+        }}
       >
         Show more
       </button>

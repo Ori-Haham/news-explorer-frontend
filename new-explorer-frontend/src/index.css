@@ -113,6 +113,9 @@
 @import url(./blocks/form/__imput-name/form__input-name.css);
 @import url(./blocks/form/__input/form__input.css);
 @import url(./blocks/form/__error-message/form__error-message.css);
+@import url(./blocks/form/__button-container/form__button-container.css);
+@import url(./blocks/form/__error-message/_place/form__error-message_place_button.css);
+@import url(./blocks/form/__error-message/_place/form__error-message_place_search.css);
 @import url(./blocks/form/__switch-forms-button/form__switch-forms-button.css);
 @import url(./blocks/form/__switch-forms-span-text/form__switch-forms-span-text.css);
 

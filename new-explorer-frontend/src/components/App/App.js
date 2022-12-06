@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
-import SavedArticles from '../SavedArticles/SavedArticles';
+import SavedArticlesPage from '../SavedArticlesPage/SavedArticlesPage';
 import SearchSection from '../SearchSEction/SearchSection';
 import Footer from '../Footer/Footer';
 import SignInPopup from '../SignInPopup/SignInPopup';
@@ -11,8 +11,8 @@ import SignUpPopup from '../SignUpPopup/SignUpPopup';
 import MessagePopup from '../MessagePopup/MessagePopup';
 import NotFound from '../NotFound/NotFound';
 import MenuPopup from '../MenuPopup/MenuPopup';
-import Preloader from '../Preloader/Preloader';
 import { CurrentUserContext } from '../../context/CurrentUserContext/CurrentUserContext';
+import SearchErrorMessage from '../SearchErrorMessage/SearchErrorMessage';
 
 import auth from '../../utils/auth';
 import newsApi from '../../utils/NewsApi';
@@ -33,6 +33,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
+  const [isSearchErrorOpen, setIsSearchErrorOpen] = useState(true);
 
   useEffect(() => {
     const close = (e) => {
@@ -45,6 +46,9 @@ function App() {
   }, [SignInPopup]);
 
   useEffect(() => {
+    setSavedArticles((state) => {
+      return (state = []);
+    });
     if (isLoggedIn === true) {
       mainApi
         .getSavedArticles()
@@ -86,36 +90,34 @@ function App() {
     setIsMenuPopupOpen(false);
   }
 
-  function handleSignup(email, password, name) {
+  function handleSignup(email, password, name, showErrorMessage, resetForm) {
     auth
       .register(email, password, name)
       .then(() => {
         closeSignUpPopup();
+        resetForm();
         setIsMessageOpen(true);
       })
       .catch((err) => {
+        showErrorMessage();
         console.log(err);
       });
   }
 
-  function handleSignin(email, password) {
+  function handleSignin(email, password, showErrorMessage, resetForm) {
     auth
       .authorize(email, password)
       .then((res) => {
-        if (res.token) {
-          localStorage.removeItem('jwt');
-          localStorage.setItem('jwt', res.token);
-          closeSignInPopup();
-        }
-        // else {
-        //   openErrormessage();
-        // }
+        localStorage.removeItem('jwt');
+        localStorage.setItem('jwt', res.token);
+        closeSignInPopup();
       })
       .then(() => {
         tokenCheck();
+        resetForm();
       })
       .catch((err) => {
-        // openErrormessage();
+        showErrorMessage();
         console.log(err);
       });
   }
@@ -129,9 +131,6 @@ function App() {
           setUserData(data);
         })
         .then(() => {
-          // getInitialCard();
-        })
-        .then(() => {
           setIsLoggedIn(true);
         })
         .catch((err) => console.log(err));
@@ -140,28 +139,81 @@ function App() {
 
   function handleLogOut() {
     setIsLoggedIn(false);
+    localStorage.removeItem('jwt');
     history.push('/');
+  }
+
+  function openNotFound() {
+    setIsNotFoundOpen(true);
   }
 
   function handleSearch(keyword) {
     newsApi
       .getArticles(keyword)
       .then((data) => {
+        setIsSearchErrorOpen(false);
         setIsNotFoundOpen(false);
-        setIsLoding(true);
-        setSearchResults(() => {
-          const newArr = data.articles.map((v) => {
-            return { ...v, keyword };
-          });
-          return newArr;
-        });
+        if (data.totalResults === 0) {
+          setIsNotFoundOpen(true);
+        } else {
+          setIsLoding(true);
+        }
+        return data;
       })
-      .then(() => {
-        setIsLoding(false);
+      .then((data) => {
+        setTimeout(() => {
+          setSearchResults(() => {
+            const newArr = data.articles.map((v) => {
+              return { ...v, keyword };
+            });
+            return newArr;
+          });
+          setIsLoding(false);
+        }, 1000);
+      })
+
+      .catch((err) => {
+        console.log(err.StatusCode);
+        setIsSearchErrorOpen(true);
+      });
+  }
+
+  function handleSaveArticle(article, markArticle) {
+    mainApi
+      .postArticle(
+        article.keyword,
+        article.title,
+        article.text,
+        article.date,
+        article.source,
+        article.link,
+        article.image,
+      )
+      .then((data) => {
+        markArticle();
+        setSavedArticles((state) => [...state, data]);
       })
       .catch((err) => {
         console.log(err);
-        setIsNotFoundOpen(true);
+      });
+  }
+
+  function handleArticleDelete(articleId) {
+    const setUpdatedArticlesList = (article) => {
+      setSavedArticles((state) => {
+        return state.filter((ArticleInList) => {
+          return ArticleInList._id !== article._id;
+        });
+      });
+    };
+
+    mainApi
+      .deleteArticle(articleId)
+      .then((article) => {
+        setUpdatedArticlesList(article);
+      })
+      .catch((err) => {
+        console.log(`Oops, error: ${err} !`);
       });
   }
 
@@ -177,14 +229,21 @@ function App() {
         />
         <SearchSection onSearch={handleSearch} />
       </div>
-      {Isloding && <Preloader />}
+      {isSearchErrorOpen && <SearchErrorMessage />}
       {isNotFoundOpen && <NotFound />}
-      <Main searchResults={searchResults}></Main>
+      <Main
+        searchResults={searchResults}
+        savedArticles={savedArticles}
+        onSubmit={handleSaveArticle}
+        onDelete={handleArticleDelete}
+        isLoggedIn={isLoggedIn}
+        Isloding={Isloding}
+      ></Main>
       <Footer />
     </Route>
   );
 
-  const SavedArticlesPage = (
+  const savedArticlesPage = (
     <Route path={'/articles'}>
       <Header
         openSignin={openSignInPopup}
@@ -192,7 +251,10 @@ function App() {
         isLoggedIn={isLoggedIn}
         onLogOut={handleLogOut}
       />
-      <SavedArticles savedArticles={savedArticles} />
+      <SavedArticlesPage
+        savedArticles={savedArticles}
+        onDelete={handleArticleDelete}
+      />
       <Footer />
     </Route>
   );
@@ -202,19 +264,21 @@ function App() {
       <div className='app'>
         <Switch>
           {homePage}
-          {isLoggedIn ? SavedArticlesPage : <Redirect to='/' />}
+          {isLoggedIn ? savedArticlesPage : <Redirect to='/' />}
         </Switch>
         <SignInPopup
           isOpen={isSignInPopupOpen}
           onClose={closeSignInPopup}
           onSwitchPopupClick={openSignUpPopup}
           handleSignin={handleSignin}
+          isLoggedIn={isLoggedIn}
         />
         <SignUpPopup
           isOpen={isSignUpPopupOpen}
           onClose={closeSignUpPopup}
           onSwitchPopupClick={openSignInPopup}
           handleSignup={handleSignup}
+          isLoggedIn={isLoggedIn}
         ></SignUpPopup>
         {isMessageOpen && (
           <MessagePopup
@@ -223,9 +287,7 @@ function App() {
             openSignInPopup={openSignInPopup}
           />
         )}
-        (
         <MenuPopup onClose={closeMenuPopup} openSignInPopup={openSignInPopup} />
-        )
       </div>
     </CurrentUserContext.Provider>
   );

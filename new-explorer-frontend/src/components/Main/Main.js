@@ -9,10 +9,13 @@ export default function Main(props) {
       <main className='main'>
         {props.Isloding && <Preloader />}
         {props.isNotFoundOpen && <NotFound />}
-        {props.searchResults.length > 0 && (
+        {props.searchResults.length > 0 && !props.Isloding && (
           <SearchResults
             searchResults={props.searchResults}
+            savedArticles={props.savedArticles}
             isLoggedIn={props.isLoggedIn}
+            onSubmit={props.onSubmit}
+            onDelete={props.onDelete}
           />
         )}
         <AboutTheAuthor />

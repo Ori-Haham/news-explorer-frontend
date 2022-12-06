@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
@@ -15,6 +15,34 @@ export default function SignInPopup(props) {
 
   const [userNameError, setUserNameError] = useState('');
   const [isUserNameValid, setIsUserNameValid] = useState(false);
+
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    setShowMessage(false);
+  }, [isEmailValid, isPasswordValid, isUserNameValid]);
+
+  const resetForm = useCallback(
+    (newValues = '', newIsValid = false) => {
+      setEmail(newValues);
+      setPassword(newValues);
+      setUserName(newValues);
+      setUserNameError(newValues);
+      setIsEmailValid(newIsValid);
+      setIsPasswordValid(newIsValid);
+      setIsUserNameValid(newIsValid);
+      setEmailError(newValues);
+      setPasswordError(newValues);
+      setIsUserNameValid(newValues);
+      setShowMessage(newValues);
+    },
+    [props.onClose],
+  );
+
+  function handleFormSwitch() {
+    props.onClose();
+    props.openSignInPopup();
+  }
 
   function handleEmailChange(evt) {
     const target = evt.target;
@@ -37,24 +65,18 @@ export default function SignInPopup(props) {
     setIsUserNameValid(target.checkValidity());
   }
 
+  function showErrorMessage() {
+    setShowMessage(true);
+  }
+
   function handleSubmit(evt) {
     evt.preventDefault();
-    props.handleSignup(email, password, userName);
-    // resetForm();
+    props.handleSignup(email, password, userName, showErrorMessage, resetForm);
   }
 
   function isFormValid() {
-    if (!isEmailValid || !isPasswordValid || !isUserNameValid) {
-      return false;
-    }
-    return true;
+    return [isEmailValid, isPasswordValid].every((value) => value == true);
   }
-
-  // const resetForm = useCallback(() => {
-  //   setEmail('');
-  //   setEmailError('');
-  //   setIsEmailValid(false);
-  // }, [email, emailError, isEmailValid]);
 
   return (
     <PopupWithForm
@@ -63,7 +85,6 @@ export default function SignInPopup(props) {
       onClose={props.onClose}
       isOpen={props.isOpen}
       onSubmit={handleSubmit}
-      // resetForm={resetForm}
     >
       <p className='form__input-name'>Email</p>
       <input
@@ -104,18 +125,25 @@ export default function SignInPopup(props) {
       {!isUserNameValid && (
         <p className='form__error-message'>{userNameError}</p>
       )}
-      <button
-        className='button button_place_signin'
-        type='submit'
-        disabled={!isFormValid()}
-      >
-        Sign up
-      </button>
+      <div className='form__button-container'>
+        {showMessage && (
+          <p className='form__error-message form__error-message_place_button'>
+            email already exists
+          </p>
+        )}
+        <button
+          className='button button_place_signin'
+          type='submit'
+          disabled={!isFormValid()}
+        >
+          Sign up
+        </button>
+      </div>
       <button
         className='form__switch-forms-button'
         onClick={props.onSwitchPopupClick}
       >
-        or <span className='form__switch-forms-span-text'>Sign up</span>
+        or <span className='form__switch-forms-span-text'>Sign in</span>
       </button>
     </PopupWithForm>
   );
