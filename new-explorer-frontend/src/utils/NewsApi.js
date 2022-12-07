@@ -8,7 +8,7 @@ class NewsApi {
 
   getArticles(keyWord) {
     return fetch(
-      `https://newsapi.org/v2/everything?q=${keyWord}&from=2022-12-01&sortBy=popularity&apiKey=aab20bc2752142e98403c101c9be7467`,
+      `https://nomoreparties.co/news/v2/everything?q=${keyWord}&from=2022-12-01&sortBy=popularity&apiKey=aab20bc2752142e98403c101c9be7467`,
       {
         method: 'GET',
       },
