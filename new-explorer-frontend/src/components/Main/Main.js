@@ -16,6 +16,7 @@ export default function Main(props) {
             isLoggedIn={props.isLoggedIn}
             onSubmit={props.onSubmit}
             onDelete={props.onDelete}
+            openSignin={props.openSignin}
           />
         )}
         <AboutTheAuthor />

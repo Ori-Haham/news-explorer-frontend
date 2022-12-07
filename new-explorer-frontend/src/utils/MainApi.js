@@ -11,17 +11,17 @@ class MainApi {
     return res.json();
   }
 
-  getSavedArticles() {
+  getSavedArticles(token) {
     return fetch(`${this._baseUrl}/articles`, {
-      headers: { Authorization: this._authorization },
+      headers: { Authorization: `Bearer ${token}` },
     }).then(this._checkResponse);
   }
 
-  postArticle(keyword, title, text, date, source, link, image) {
+  postArticle(keyword, title, text, date, source, link, image, token) {
     return fetch(`${this._baseUrl}/articles`, {
       method: 'POST',
       headers: {
-        Authorization: this._authorization,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -36,11 +36,11 @@ class MainApi {
     }).then(this._checkResponse);
   }
 
-  deleteArticle(articleId) {
+  deleteArticle(articleId, token) {
     return fetch(`${this._baseUrl}/articles/${articleId}`, {
       method: 'DELETE',
       headers: {
-        Authorization: this._authorization,
+        Authorization: `Bearer ${token}`,
       },
     }).then(this._checkResponse);
   }

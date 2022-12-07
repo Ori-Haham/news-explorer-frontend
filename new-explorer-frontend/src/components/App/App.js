@@ -1,4 +1,10 @@
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  Redirect,
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import Header from '../Header/Header';
@@ -22,6 +28,7 @@ import '../../index.css';
 
 function App() {
   const history = useHistory();
+  let location = useLocation();
 
   const [userData, setUserData] = useState({});
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
@@ -33,25 +40,40 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
-  const [isSearchErrorOpen, setIsSearchErrorOpen] = useState(true);
+  const [isSearchErrorOpen, setIsSearchErrorOpen] = useState(false);
 
   useEffect(() => {
-    const close = (e) => {
-      if (e.keyCode === 27) {
+    tokenCheck();
+  }, []);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (location.pathname === '/articles' && !jwt) {
+      openSignInPopup();
+    }
+  }, [location]);
+
+  useEffect(() => {
+    function close(evt) {
+      if (evt.key === 'Escape') {
         closeSignInPopup();
+        closeSignUpPopup();
+        closeMessage();
+        closeMenuPopup();
       }
-    };
+    }
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
-  }, [SignInPopup]);
+  }, []);
 
   useEffect(() => {
     setSavedArticles((state) => {
       return (state = []);
     });
     if (isLoggedIn === true) {
+      const jwt = localStorage.getItem('jwt');
       mainApi
-        .getSavedArticles()
+        .getSavedArticles(jwt)
         .then((data) => {
           setSavedArticles(data);
         })
@@ -143,10 +165,6 @@ function App() {
     history.push('/');
   }
 
-  function openNotFound() {
-    setIsNotFoundOpen(true);
-  }
-
   function handleSearch(keyword) {
     newsApi
       .getArticles(keyword)
@@ -179,6 +197,7 @@ function App() {
   }
 
   function handleSaveArticle(article, markArticle) {
+    const jwt = localStorage.getItem('jwt');
     mainApi
       .postArticle(
         article.keyword,
@@ -188,6 +207,7 @@ function App() {
         article.source,
         article.link,
         article.image,
+        jwt,
       )
       .then((data) => {
         markArticle();
@@ -199,6 +219,7 @@ function App() {
   }
 
   function handleArticleDelete(articleId) {
+    const jwt = localStorage.getItem('jwt');
     const setUpdatedArticlesList = (article) => {
       setSavedArticles((state) => {
         return state.filter((ArticleInList) => {
@@ -208,7 +229,7 @@ function App() {
     };
 
     mainApi
-      .deleteArticle(articleId)
+      .deleteArticle(articleId, jwt)
       .then((article) => {
         setUpdatedArticlesList(article);
       })
@@ -238,6 +259,7 @@ function App() {
         onDelete={handleArticleDelete}
         isLoggedIn={isLoggedIn}
         Isloding={Isloding}
+        openSignin={openSignInPopup}
       ></Main>
       <Footer />
     </Route>

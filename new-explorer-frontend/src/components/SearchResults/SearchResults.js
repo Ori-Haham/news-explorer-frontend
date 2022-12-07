@@ -21,6 +21,7 @@ export default function SearchResults(props) {
       onSubmit={props.onSubmit}
       onDelete={props.onDelete}
       savedArticles={props.savedArticles}
+      openSignin={props.openSignin}
       article={{
         keyword: article.keyword,
         title: article.title,

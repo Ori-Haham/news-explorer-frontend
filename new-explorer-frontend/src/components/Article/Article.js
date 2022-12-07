@@ -1,18 +1,14 @@
 import React from 'react';
-import { CurrentUserContext } from '../../context/CurrentUserContext/CurrentUserContext';
 import { useState, useEffect } from 'react';
 
-import mainApi from '../../utils/MainApi';
-
 export default function Article(props) {
-  const currentUser = React.useContext(CurrentUserContext);
-
   const [isChecked, setIsChecked] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
   useEffect(() => {
     markSavedArticles();
-  }, [isChecked, props.savedArticles]);
+  }, [props.savedArticles]);
+
   function handleHover() {
     setIsHover((state) => {
       return !state;
@@ -21,6 +17,9 @@ export default function Article(props) {
 
   function handleDelete() {
     props.onDelete(props.article._id);
+    if (props.isHome) {
+      setIsChecked(false);
+    }
   }
 
   function markArticle() {
@@ -30,6 +29,7 @@ export default function Article(props) {
   function checkIfSaved() {
     if (props.isHome) {
       return props.savedArticles.some((v) => {
+        props.article._id = v._id;
         return v.link === props.article.link;
       });
     }
@@ -50,6 +50,8 @@ export default function Article(props) {
       return handleDelete();
     } else if (props.isLoggedIn) {
       return handleSubmit();
+    } else {
+      props.openSignin();
     }
   }
 
