@@ -1,5 +1,6 @@
 .navigation__link {
   height: 100%;
+  margin: 0 0 0 auto;
   padding: 26px 12px;
   text-decoration: none;
   border: 0;

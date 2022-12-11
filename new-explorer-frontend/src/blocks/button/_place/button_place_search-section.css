@@ -17,6 +17,10 @@
   background-color: #2a65cc;
 }
 
+.button_place_search-section:disabled {
+  background-color: #e6e8eb;
+}
+
 @media screen and (max-width: 768px) {
   .button_place_search-section {
     width: 160px;

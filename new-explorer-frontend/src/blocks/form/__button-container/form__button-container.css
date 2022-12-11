@@ -1,0 +1,9 @@
+.form__button-container {
+  margin: 39px 0 0;
+}
+
+@media screen and (max-width: 580px) {
+  .form__button-container {
+    margin: 23px 0 0;
+  }
+}
